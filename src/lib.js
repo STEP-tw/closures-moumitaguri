@@ -18,10 +18,31 @@ const makeCounterFromZero = function(){
 }
 
 const makeDeltaTracker = undefined;
+//  let deltaTracker = { old : 0, delta : 0, new : del };
+//  return function(delt){
+//    deltaTracker.delta = delt ;
+//    deltaTracker.old = deltaTracker.new;
+//    deltaTracker.new = deltaTracker.old + delt;
+//    return deltaTracker;
+//  }
+//}
+
+
+
+
 const makeFiboGenerator = undefined;
 const makeCycler = undefined;
 const curry = undefined;
-const compose = undefined;
+
+
+
+const compose = function(func1,func2){
+  return function(arg1,arg2){
+      return func1(func2(arg1,arg2));
+  }
+}
+
+
 
 exports.makeConstant=makeConstant;
 exports.makeCounterFromZero=makeCounterFromZero;
