@@ -29,20 +29,25 @@ const makeDeltaTracker = function(deltaValue){
   }
 }
 
-
-
-const makeFiboGenerator = undefined;
-/*const makeFiboGenerator = function(){
-  let prev = -1;
-  let next = 1;
-  return function(){
-    let curr = prev + next;
-    prev = next;
-    next = curr;
-    return curr;
+const makeFiboGenerator = function(arg1,arg2){
+  let term1 = 0;
+  let term2 = 1;
+  if(arg1 != undefined && arg2 == undefined){
+    term1 = 0;
+    term2 = arg1;
   }
-}*/
-
+  if(arg1 != undefined && arg2 != undefined){
+    term1 = arg1;
+    term2 = arg2;
+  }
+  return  function(){
+    let term3 = term1 + term2;
+    term = term1;
+    term1 = term2;
+    term2 = term3;
+    return term;
+  }
+}
 
 const makeCycler = function(list){
   let count = 0;
@@ -69,7 +74,6 @@ const compose = function(func1,func2){
       return func1(func2(arg1,arg2));
   }
 }
-
 
 exports.makeConstant=makeConstant;
 exports.makeCounterFromZero=makeCounterFromZero;
