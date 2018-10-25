@@ -17,30 +17,34 @@ const makeCounterFromZero = function(){
   }
 }
 
-const makeDeltaTracker = undefined; 
-//const makeDeltaTracker = function(del){
-//  let deltaTracker = { old : 0, delta : 0, new : del };
-//  return function(delt){
-//    deltaTracker.delta = delt ;
-//    deltaTracker.old = deltaTracker.new;
-//    deltaTracker.new = deltaTracker.old + delt;
-//    return deltaTracker;
-//  }
-//}
+//const makeDeltaTracker = undefined; 
+const makeDeltaTracker = function(deltaValue){
+  let deltaTracker = { old : 0, delta : 0, new : deltaValue };
+  return function(del){
+    if(del != undefined){
+    deltaTracker.delta = del;
+    deltaTracker.old = deltaTracker.new;
+    deltaTracker.new = deltaTracker.old + deltaTracker.delta;
+    return deltaTracker;
+  }
+    deltaTracker.old = deltaTracker.old + deltaValue;
+    return deltaTracker;
+  }
+}
 
 
 
-const makeFiboGenerator = undefined;
-//const makeFiboGenerator = function(){
-//  let prev = -1;
-//  let next = 1;
-//  return function(){
-//    let curr = prev + next;
-//    prev = next;
-//    next = curr;
-//    return curr;
-//  }
-//}
+//const makeFiboGenerator = undefined;
+const makeFiboGenerator = function(){
+  let prev = -1;
+  let next = 1;
+  return function(){
+    let curr = prev + next;
+    prev = next;
+    next = curr;
+    return curr;
+  }
+}
 
 
 const makeCycler = function(list){
