@@ -12,12 +12,9 @@ const makeCounterFromN = function(count){
 
 const makeCounterFromZero = function(){
   let count = 0;
-  return function(){
-    return count++;
-  }
+  return makeCounterFromN(count);
 }
 
-//const makeDeltaTracker = undefined; 
 const makeDeltaTracker = function(deltaValue){
   let deltaTracker = { old : 0, delta : 0, new : deltaValue };
   return function(del){
@@ -34,8 +31,8 @@ const makeDeltaTracker = function(deltaValue){
 
 
 
-//const makeFiboGenerator = undefined;
-const makeFiboGenerator = function(){
+const makeFiboGenerator = undefined;
+/*const makeFiboGenerator = function(){
   let prev = -1;
   let next = 1;
   return function(){
@@ -44,7 +41,7 @@ const makeFiboGenerator = function(){
     next = curr;
     return curr;
   }
-}
+}*/
 
 
 const makeCycler = function(list){
