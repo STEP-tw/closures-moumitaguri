@@ -32,7 +32,12 @@ const makeDeltaTracker = undefined;
 
 const makeFiboGenerator = undefined;
 const makeCycler = undefined;
-const curry = undefined;
+const curry = function(func,value){
+  return function(arg1,arg2){
+    return func(value,arg1,arg2);
+  }
+}
+
 
 
 
