@@ -17,7 +17,8 @@ const makeCounterFromZero = function(){
   }
 }
 
-const makeDeltaTracker = undefined;
+const makeDeltaTracker = undefined; 
+//const makeDeltaTracker = function(del){
 //  let deltaTracker = { old : 0, delta : 0, new : del };
 //  return function(delt){
 //    deltaTracker.delta = delt ;
@@ -29,24 +30,44 @@ const makeDeltaTracker = undefined;
 
 
 
-
 const makeFiboGenerator = undefined;
-const makeCycler = undefined;
+//const makeFiboGenerator = function(){
+//  let prev = -1;
+//  let next = 1;
+//  return function(){
+//    let curr = prev + next;
+//    prev = next;
+//    next = curr;
+//    return curr;
+//  }
+//}
+
+
+const makeCycler = function(list){
+  let count = 0;
+  let divisor = list.length;
+  let originList = [];
+  for(let element of list){
+    originList.push(element);
+  }
+  return function(){
+    let cycle = count % divisor;
+    count++;
+    return originList[cycle];
+  }
+}
+
 const curry = function(func,value){
   return function(arg1,arg2){
     return func(value,arg1,arg2);
   }
 }
 
-
-
-
 const compose = function(func1,func2){
   return function(arg1,arg2){
       return func1(func2(arg1,arg2));
   }
 }
-
 
 
 exports.makeConstant=makeConstant;
