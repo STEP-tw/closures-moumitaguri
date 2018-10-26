@@ -22,10 +22,10 @@ const makeDeltaTracker = function(deltaValue){
     deltaTracker.delta = del;
     deltaTracker.old = deltaTracker.new;
     deltaTracker.new = deltaTracker.old + deltaTracker.delta;
-    return deltaTracker;
+    return { old : deltaTracker.old, delta : deltaTracker.delta, new : deltaTracker.new };
   }
     deltaTracker.old = deltaTracker.old + deltaValue;
-    return deltaTracker;
+    return { old : deltaTracker.old, delta : deltaTracker.delta, new : deltaTracker.new };
   }
 }
 
@@ -51,15 +51,10 @@ const makeFiboGenerator = function(arg1,arg2){
 
 const makeCycler = function(list){
   let count = 0;
-  let divisor = list.length;
-  let originList = [];
-  for(let element of list){
-    originList.push(element);
-  }
+  let length = list.length;
+  let originList = [...list];
   return function(){
-    let cycle = count % divisor;
-    count++;
-    return originList[cycle];
+    return originList[count++ % length];
   }
 }
 
