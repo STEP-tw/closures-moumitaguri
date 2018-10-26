@@ -14,17 +14,11 @@ const makeCounterFromZero = function(){
   return makeCounterFromN(0);
 }
 
-const makeDeltaTracker = function(deltaValue){
-  let deltaTracker = { old : 0, delta : 0, new : deltaValue };
-  return function(del){
-    if(del != undefined){
-    deltaTracker.delta = del;
-    deltaTracker.old = deltaTracker.new;
-    deltaTracker.new = deltaTracker.old + deltaTracker.delta;
-    return { old : deltaTracker.old, delta : deltaTracker.delta, new : deltaTracker.new };
-  }
-    deltaTracker.old = deltaTracker.old + deltaValue;
-    return { old : deltaTracker.old, delta : deltaTracker.delta, new : deltaTracker.new };
+const makeDeltaTracker = function(old){
+  return function(del = 0){
+    let deltaTracker = { old : old, delta : del, new : old + del };
+    old = old + del;
+    return deltaTracker;
   }
 }
 
