@@ -49,11 +49,11 @@ const makeFiboGenerator = function(arg1,arg2){
 }
 
 const makeCycler = function(list){
-  let count = 0;
+  let position = 0;
   let length = list.length;
   let originList = [...list];
   return function(){
-    return originList[count++ % length];
+    return originList[position++ % length];
   }
 }
 
